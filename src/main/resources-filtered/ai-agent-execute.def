@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition:ConnectorDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1">
+  <id>${ai-agent-execute.def.id}</id>
+  <version>${ai-agent-execute.def.version}</version>
+  <icon>ai-agent.png</icon>
+  <category icon="ai-agent.png" id="AI Agent"/>
+
+  <!-- Connection inputs -->
+  <input name="llmProvider" type="java.lang.String" mandatory="true"/>
+  <input name="llmApiKey" type="java.lang.String" mandatory="true"/>
+  <input name="llmModel" type="java.lang.String" mandatory="true"/>
+  <input name="llmBaseUrl" type="java.lang.String" mandatory="false"/>
+  <input name="maxIterations" type="java.lang.Integer" mandatory="false" defaultValue="10"/>
+  <input name="maxTokenBudget" type="java.lang.Integer" mandatory="false" defaultValue="100000"/>
+  <input name="temperature" type="java.lang.Double" mandatory="false" defaultValue="0.1"/>
+  <input name="connectTimeout" type="java.lang.Integer" mandatory="false" defaultValue="30000"/>
+  <input name="readTimeout" type="java.lang.Integer" mandatory="false" defaultValue="120000"/>
+
+  <!-- Operation inputs -->
+  <input name="systemPrompt" type="java.lang.String" mandatory="true"/>
+  <input name="userPrompt" type="java.lang.String" mandatory="true"/>
+  <input name="toolsJson" type="java.lang.String" mandatory="false"/>
+  <input name="contextJson" type="java.lang.String" mandatory="false"/>
+  <input name="toolApprovalMode" type="java.lang.String" mandatory="false" defaultValue="none"/>
+
+  <!-- Outputs -->
+  <output name="executionId" type="java.lang.String"/>
+  <output name="status" type="java.lang.String"/>
+  <output name="agentResult" type="java.lang.String"/>
+  <output name="agentResultJson" type="java.lang.String"/>
+  <output name="iterations" type="java.lang.Integer"/>
+  <output name="tokensUsed" type="java.lang.Integer"/>
+  <output name="toolCallCount" type="java.lang.Integer"/>
+  <output name="pendingToolCall" type="java.lang.String"/>
+  <output name="success" type="java.lang.Boolean"/>
+  <output name="errorMessage" type="java.lang.String"/>
+
+  <!-- UI Pages -->
+  <page id="connectionPage">
+    <widget xsi:type="definition:Select" id="llmProviderWidget" inputName="llmProvider">
+      <items>openai</items>
+      <items>anthropic</items>
+      <items>google</items>
+      <items>azure-openai</items>
+      <items>custom</items>
+    </widget>
+    <widget xsi:type="definition:Password" id="llmApiKeyWidget" inputName="llmApiKey"/>
+    <widget xsi:type="definition:Text" id="llmModelWidget" inputName="llmModel"/>
+    <widget xsi:type="definition:Text" id="llmBaseUrlWidget" inputName="llmBaseUrl"/>
+    <widget xsi:type="definition:Text" id="connectTimeoutWidget" inputName="connectTimeout"/>
+    <widget xsi:type="definition:Text" id="readTimeoutWidget" inputName="readTimeout"/>
+  </page>
+  <page id="operationPage">
+    <widget xsi:type="definition:TextArea" id="systemPromptWidget" inputName="systemPrompt"/>
+    <widget xsi:type="definition:TextArea" id="userPromptWidget" inputName="userPrompt"/>
+    <widget xsi:type="definition:TextArea" id="toolsJsonWidget" inputName="toolsJson"/>
+    <widget xsi:type="definition:TextArea" id="contextJsonWidget" inputName="contextJson"/>
+  </page>
+  <page id="advancedPage">
+    <widget xsi:type="definition:Text" id="maxIterationsWidget" inputName="maxIterations"/>
+    <widget xsi:type="definition:Text" id="maxTokenBudgetWidget" inputName="maxTokenBudget"/>
+    <widget xsi:type="definition:Text" id="temperatureWidget" inputName="temperature"/>
+    <widget xsi:type="definition:Select" id="toolApprovalModeWidget" inputName="toolApprovalMode">
+      <items>none</items>
+      <items>always</items>
+      <items>dangerous</items>
+    </widget>
+  </page>
+</definition:ConnectorDefinition>

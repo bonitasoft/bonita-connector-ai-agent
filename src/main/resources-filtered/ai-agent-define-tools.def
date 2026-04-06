@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition:ConnectorDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1">
+  <id>${ai-agent-define-tools.def.id}</id>
+  <version>${ai-agent-define-tools.def.version}</version>
+  <icon>ai-agent.png</icon>
+  <category icon="ai-agent.png" id="AI Agent"/>
+
+  <!-- Operation inputs -->
+  <input name="toolDefinitionsJson" type="java.lang.String" mandatory="true"/>
+  <input name="toolSetName" type="java.lang.String" mandatory="false"/>
+
+  <!-- Outputs -->
+  <output name="toolSetName" type="java.lang.String"/>
+  <output name="toolCount" type="java.lang.Integer"/>
+  <output name="toolNames" type="java.lang.String"/>
+  <output name="validatedToolsJson" type="java.lang.String"/>
+  <output name="success" type="java.lang.Boolean"/>
+  <output name="errorMessage" type="java.lang.String"/>
+
+  <!-- UI Pages -->
+  <page id="operationPage">
+    <widget xsi:type="definition:TextArea" id="toolDefinitionsJsonWidget" inputName="toolDefinitionsJson"/>
+    <widget xsi:type="definition:Text" id="toolSetNameWidget" inputName="toolSetName"/>
+  </page>
+</definition:ConnectorDefinition>

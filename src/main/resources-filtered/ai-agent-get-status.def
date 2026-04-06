@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition:ConnectorDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1">
+  <id>${ai-agent-get-status.def.id}</id>
+  <version>${ai-agent-get-status.def.version}</version>
+  <icon>ai-agent.png</icon>
+  <category icon="ai-agent.png" id="AI Agent"/>
+
+  <!-- Operation inputs -->
+  <input name="executionId" type="java.lang.String" mandatory="true"/>
+
+  <!-- Outputs -->
+  <output name="executionId" type="java.lang.String"/>
+  <output name="status" type="java.lang.String"/>
+  <output name="currentIteration" type="java.lang.Integer"/>
+  <output name="tokensUsed" type="java.lang.Integer"/>
+  <output name="toolCallCount" type="java.lang.Integer"/>
+  <output name="elapsedTimeMs" type="java.lang.Long"/>
+  <output name="agentResult" type="java.lang.String"/>
+  <output name="pendingToolCall" type="java.lang.String"/>
+  <output name="success" type="java.lang.Boolean"/>
+  <output name="errorMessage" type="java.lang.String"/>
+
+  <!-- UI Pages -->
+  <page id="operationPage">
+    <widget xsi:type="definition:Text" id="executionIdWidget" inputName="executionId"/>
+  </page>
+</definition:ConnectorDefinition>

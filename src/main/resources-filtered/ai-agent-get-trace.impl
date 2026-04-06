@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<implementation:connectorImplementation xmlns:implementation="http://www.bonitasoft.org/ns/connector/implementation/6.0">
+  <implementationId>${ai-agent-get-trace.impl.id}</implementationId>
+  <implementationVersion>${ai-agent-get-trace.impl.version}</implementationVersion>
+  <definitionId>${ai-agent-get-trace.def.id}</definitionId>
+  <definitionVersion>${ai-agent-get-trace.def.version}</definitionVersion>
+  <implementationClassname>${ai-agent-get-trace.main-class}</implementationClassname>
+  <hasSources>false</hasSources>
+  <description>AI Agent Get Trace connector implementation</description>
+
+<!-- retrieved from the pom.xml at build time -->
+${connector-dependencies}
+
+</implementation:connectorImplementation>
